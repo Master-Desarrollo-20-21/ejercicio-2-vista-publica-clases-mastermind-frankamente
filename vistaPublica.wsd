@@ -1,0 +1,42 @@
+@startuml
+title Mastermind - Public View
+
+class Mastermind {
+	+ play()
+	{static} main()
+}
+Mastermind *--> Player
+
+class Player {
+	+ ProposedCombination proposeCombination()
+	+ validateCombination(ProposedCombination)
+}
+
+Player -> ProposedCombination
+
+class ProposedCombination {
+	+ boolean isValid()
+	+ Result obtainResult()
+}
+
+ProposedCombination *-up-> Result
+
+class Result {
+
+}
+
+Result *-> "0..4" Success
+enum Success {
+	* Black
+	* White
+}
+
+
+ProposedCombination <|-down- Red
+ProposedCombination <|-down- Orange
+ProposedCombination <|-down- Yellow
+ProposedCombination <|-down- Green
+ProposedCombination <|-down- Blue
+ProposedCombination <|-down- Purple
+
+@enduml
